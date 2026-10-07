@@ -3,56 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>オハザブ日記</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
     body {
       margin: 0;
-      background: #f7f5f0;
-      color: #222;
-      font-family: sans-serif;
+      padding: 0;
+      background: #ffffff;
+      color: #003B75;
+    }
+
+    body {
+      font-family: "Yu Gothic", "YuGothic", sans-serif;
+      padding-bottom: 100px;
     }
 
     header {
-      padding: 60px 20px 40px;
-      text-align: center;
+      padding: 28px 30px 0;
     }
 
-    h1 {
-      font-size: 32px;
-      font-weight: 400;
+    .site-title {
       margin: 0;
-    }
-
-    .subtitle {
-      margin-top: 10px;
-      color: #777;
-      font-size: 14px;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: #003B75;
     }
 
     main {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .entry {
-      background: white;
-      padding: 25px;
-      margin-bottom: 20px;
-      border-radius: 8px;
+      padding: 55px 30px 60px;
+      max-width: 900px;
     }
 
     .date {
-      color: #888;
-      font-size: 13px;
-      margin-bottom: 12px;
+      margin: 0 0 45px;
+      font-family: "Yu Mincho", "YuMincho", serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: #003B75;
+      text-align: left;
     }
 
-    .entry a {
-      color: #222;
+    .content {
+      font-family: "Yu Gothic", "YuGothic", sans-serif;
+      color: #003B75;
+      font-size: 16px;
+      line-height: 2;
+    }
+
+    .content img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 30px 0;
+    }
+
+    /*
+      ナビゲーション部分。
+      position: fixed にして常に一番下に置く。
+      白背景＋高さを確保して、
+      本文や写真と重ならないようにする。
+    */
+    .navigation {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 80px;
+      background: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+      z-index: 100;
+    }
+
+    .navigation a {
+      color: #003B75;
       text-decoration: none;
-      font-size: 20px;
+      font-family: "Yu Gothic", "YuGothic", sans-serif;
+      font-size: 15px;
+    }
+
+    .navigation a:hover {
+      opacity: 0.55;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 22px 20px 0;
+      }
+
+      .site-title {
+        font-size: 17px;
+      }
+
+      main {
+        padding: 45px 20px 55px;
+      }
+
+      .date {
+        font-size: 18px;
+        margin-bottom: 35px;
+      }
+
+      .content {
+        font-size: 15px;
+        line-height: 1.9;
+      }
+
+      .navigation {
+        height: 75px;
+        padding: 0 20px;
+      }
     }
   </style>
 </head>
@@ -60,18 +129,31 @@
 <body>
 
   <header>
-    <h1>オハザブ日記</h1>
-    <div class="subtitle">日々の記録</div>
+    <h1 class="site-title">オハザブ日記</h1>
   </header>
 
   <main>
 
-    <div class="entry">
-      <div class="date">2026.10.07</div>
-      <a href="20261007.html">今日の日記</a>
+    <div class="date">
+      20261007
+    </div>
+
+    <div class="content">
+
+      <!-- ここに日記を書く -->
+
+      <p>
+        今日はここに日記を書きます。
+      </p>
+
     </div>
 
   </main>
+
+  <nav class="navigation">
+    <a href="20261006.html">← きのう</a>
+    <a href="20261008.html">あした →</a>
+  </nav>
 
 </body>
 </html>
