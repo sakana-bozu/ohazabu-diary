@@ -7,7 +7,6 @@
   <title>オハザブ日記</title>
 
   <style>
-
     * {
       box-sizing: border-box;
     }
@@ -18,202 +17,96 @@
 
     body {
       margin: 0;
-      min-height: 100vh;
-
       background: #ffffff;
       color: #000000;
-
-      font-family:
-        "Yu Gothic",
-        "游ゴシック",
-        YuGothic,
-        sans-serif;
-
-      font-weight: 400;
+      font-family: "Yu Gothic", "游ゴシック", YuGothic, sans-serif;
     }
-
-
-    /* =========================
-       全体
-    ========================= */
 
     .page {
       width: min(900px, calc(100% - 48px));
       margin: 0 auto;
     }
 
-
-    /* =========================
-       ヘッダー
-    ========================= */
-
     header {
-      position: relative;
-      padding-top: 42px;
+      position: fixed;
+      top: 36px;
+      left: 0;
+      width: 100%;
+      z-index: 20;
+      pointer-events: none;
+    }
+
+    .header-inner {
+      width: min(900px, calc(100% - 48px));
+      margin: 0 auto;
     }
 
     .site-title {
       margin: 0;
-
       color: #003B75;
-
-      font-family:
-        "Yu Gothic",
-        "游ゴシック",
-        YuGothic,
-        sans-serif;
-
+      font-family: "Yu Gothic", "游ゴシック", YuGothic, sans-serif;
       font-size: 28px;
       font-weight: 600;
-      line-height: 1.4;
+      line-height: 1;
     }
-
-
-    /* =========================
-       メニューボタン
-    ========================= */
 
     .menu-button {
       position: fixed;
-
-      top: 36px;
-      right: max(22px, calc((100vw - 900px) / 2));
-
-      z-index: 1001;
-
-      width: 42px;
-      height: 42px;
-
-      padding: 0;
-      margin: 0;
+      top: 28px;
+      right: max(24px, calc((100vw - 900px) / 2));
+      z-index: 40;
 
       border: none;
-      outline: none;
-
       background: transparent;
       color: #003B75;
 
+      font-family: "Yu Gothic", "游ゴシック", YuGothic, sans-serif;
+      font-size: 35px;
+      font-weight: 300;
+      line-height: 1;
+
+      padding: 0;
       cursor: pointer;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-family:
-        "Yu Gothic",
-        "游ゴシック",
-        YuGothic,
-        sans-serif;
-
-      font-size: 35px;
-      font-weight: 300;
-      line-height: 1;
-
-      appearance: none;
     }
-
-    .menu-button span {
-      display: block;
-
-      font-family:
-        "Yu Gothic",
-        "游ゴシック",
-        YuGothic,
-        sans-serif;
-
-      font-size: 35px;
-      font-weight: 300;
-      line-height: 1;
-
-      transform: translateY(-1px);
-    }
-
-
-    /* =========================
-       本文
-    ========================= */
 
     main {
-      padding-top: 78px;
+      padding-top: 120px;
       padding-bottom: 150px;
     }
-
-
-    /* =========================
-       日付
-    ========================= */
 
     .date {
       margin: 0 0 42px 0;
 
       color: #000000;
-
-      font-family:
-        "Yu Mincho",
-        "游明朝",
-        YuMincho,
-        serif;
-
+      font-family: "Yu Mincho", "游明朝", YuMincho, serif;
       font-size: 22px;
       font-weight: 400;
-
-      line-height: 1.4;
+      line-height: 1;
     }
 
-
-    /* =========================
-       日記本文
-    ========================= */
-
-    .article {
+    article {
       color: #000000;
-
-      font-family:
-        "Yu Gothic",
-        "游ゴシック",
-        YuGothic,
-        sans-serif;
-
+      font-family: "Yu Gothic", "游ゴシック", YuGothic, sans-serif;
       font-size: 22px;
       font-weight: 350;
-
       line-height: 1.45;
 
       white-space: pre-wrap;
     }
 
-
-    /* =========================
-       下部ナビ用の余白
-    ========================= */
-
-    .bottom-space {
-      height: 90px;
-    }
-
-
-    /* =========================
-       下部ナビゲーション
-    ========================= */
-
-    .navigation {
+    .bottom-nav {
       position: fixed;
-
       left: 0;
       bottom: 0;
-
-      z-index: 900;
-
       width: 100%;
-
-      padding: 20px 0 28px;
+      z-index: 20;
 
       background: #ffffff;
+      padding: 20px 0 28px;
     }
 
-    .navigation-inner {
+    .bottom-nav-inner {
       width: min(900px, calc(100% - 48px));
-
       margin: 0 auto;
 
       display: flex;
@@ -221,172 +114,110 @@
       align-items: center;
     }
 
-
-    /* =========================
-       きのう / あした
-    ========================= */
-
     .nav-link {
       display: flex;
       align-items: center;
-
-      gap: 8px;
+      gap: 9px;
 
       color: #003B75;
+      text-decoration: none;
 
-      font-family:
-        "Yu Gothic",
-        "游ゴシック",
-        YuGothic,
-        sans-serif;
-
+      font-family: "Yu Gothic", "游ゴシック", YuGothic, sans-serif;
       font-size: 18px;
       font-weight: 600;
-
-      text-decoration: none;
+      line-height: 1;
     }
-
-    .nav-link:hover {
-      opacity: 0.55;
-    }
-
-
-    /* =========================
-       矢印
-    ========================= */
 
     .arrow {
       position: relative;
-
       display: inline-block;
-
       width: 22px;
       height: 14px;
-
-      flex-shrink: 0;
     }
 
-    .arrow::before {
+    .arrow-left::before {
       content: "";
-
       position: absolute;
-
-      top: 50%;
       left: 0;
-
-      width: 20px;
+      top: 6px;
+      width: 22px;
       height: 2px;
-
       background: #003B75;
-
-      transform: translateY(-50%);
     }
-
-
-    /* 左矢印 */
 
     .arrow-left::after {
       content: "";
-
       position: absolute;
-
-      left: 1px;
-      top: 50%;
-
+      left: 0;
+      top: 2px;
       width: 9px;
       height: 9px;
-
       border-left: 2px solid #003B75;
       border-bottom: 2px solid #003B75;
-
-      transform:
-        translateY(-50%)
-        rotate(45deg);
+      transform: rotate(45deg);
     }
 
-
-    /* 右矢印 */
+    .arrow-right::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 22px;
+      height: 2px;
+      background: #003B75;
+    }
 
     .arrow-right::after {
       content: "";
-
       position: absolute;
-
-      right: 1px;
-      top: 50%;
-
+      right: 0;
+      top: 2px;
       width: 9px;
       height: 9px;
-
-      border-top: 2px solid #003B75;
       border-right: 2px solid #003B75;
-
-      transform:
-        translateY(-50%)
-        rotate(45deg);
+      border-top: 2px solid #003B75;
+      transform: rotate(45deg);
     }
-
-
-    /* =========================
-       メニュー
-    ========================= */
 
     .menu {
       position: fixed;
-
       inset: 0;
+      z-index: 30;
 
-      z-index: 1000;
-
-      display: none;
-
-      align-items: center;
+      display: flex;
       justify-content: center;
+      align-items: center;
 
       background: #ffffff;
+
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+
+      transition: opacity 0.2s ease;
     }
 
     .menu.open {
-      display: flex;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
     }
 
     .menu-list {
       display: flex;
-
       flex-direction: column;
       align-items: center;
-
-      gap: 25px;
-
-      margin: 0;
-      padding: 0;
-
-      list-style: none;
+      gap: 28px;
     }
 
     .menu-list a {
       color: #003B75;
+      text-decoration: none;
 
-      font-family:
-        "Yu Gothic",
-        "游ゴシック",
-        YuGothic,
-        sans-serif;
-
+      font-family: "Yu Gothic", "游ゴシック", YuGothic, sans-serif;
       font-size: 28px;
       font-weight: 500;
-
-      text-decoration: none;
     }
-
-    .menu-list a:hover {
-      opacity: 0.55;
-    }
-
-
-    /* =========================
-       スマートフォン
-    ========================= */
 
     @media (max-width: 600px) {
 
@@ -394,306 +225,210 @@
         width: calc(100% - 40px);
       }
 
+      .header-inner {
+        width: calc(100% - 40px);
+      }
+
       header {
-        padding-top: 30px;
+        top: 30px;
       }
 
       .site-title {
-        font-size: 24px;
+        font-size: 28px;
       }
 
       .menu-button {
-        top: 24px;
-        right: 16px;
-
-        width: 44px;
-        height: 44px;
-
-        font-size: 34px;
-      }
-
-      .menu-button span {
-        font-size: 34px;
+        top: 23px;
+        right: 20px;
+        font-size: 35px;
       }
 
       main {
-        padding-top: 60px;
-        padding-bottom: 125px;
+        padding-top: 105px;
+        padding-bottom: 140px;
       }
 
       .date {
         margin-bottom: 34px;
-
         font-size: 20px;
-        line-height: 1.35;
       }
 
-      .article {
+      article {
         font-size: 20px;
         line-height: 1.45;
       }
 
-      .navigation {
-        padding: 17px 0 23px;
+      .bottom-nav {
+        padding: 18px 0 24px;
       }
 
-      .navigation-inner {
+      .bottom-nav-inner {
         width: calc(100% - 40px);
       }
 
       .nav-link {
-        font-size: 16px;
-        font-weight: 600;
-        gap: 7px;
-      }
-
-      .arrow {
-        width: 19px;
-        height: 13px;
-      }
-
-      .arrow::before {
-        width: 17px;
-        height: 2px;
-      }
-
-      .arrow-left::after {
-        width: 8px;
-        height: 8px;
-
-        border-left-width: 2px;
-        border-bottom-width: 2px;
-      }
-
-      .arrow-right::after {
-        width: 8px;
-        height: 8px;
-
-        border-top-width: 2px;
-        border-right-width: 2px;
+        font-size: 17px;
       }
 
       .menu-list {
-        gap: 22px;
+        gap: 24px;
       }
 
       .menu-list a {
         font-size: 24px;
       }
-
     }
-
   </style>
 </head>
 
-
 <body>
 
-
-  <!-- =========================
-       ヘッダー
-  ========================== -->
-
-  <header class="page">
-
-    <h1 class="site-title">
-      オハザブ日記
-    </h1>
-
+  <header>
+    <div class="header-inner">
+      <h1 class="site-title">オハザブ日記</h1>
+    </div>
   </header>
-
-
-
-  <!-- =========================
-       メニューボタン
-  ========================== -->
 
   <button
     class="menu-button"
     id="menuButton"
     aria-label="メニューを開く"
     aria-expanded="false"
-  >
+  >☰</button>
 
-    <span id="menuIcon">☰</span>
-
-  </button>
-
-
-
-  <!-- =========================
-       最新の日記
-  ========================= -->
-
-  <main class="page">
-
-    <div class="date">
-      20261007
+  <nav class="menu" id="menu">
+    <div class="menu-list">
+      <a href="index.html">きょう</a>
+      <a href="design.html">デザイン</a>
+      <a href="record.html">記録</a>
+      <a href="profile.html">プロフィール</a>
     </div>
-
-
-    <div class="article">11時半くらいに起きて、カフェオレを飲みながらメールを返すなど仕事をして、16時ごろに担々麺風？春雨を食べた。最近ハマってるというか、春雨を買っちゃったし金欠だし。金欠だと強制的にダイエットができていい。体が軽い方がメンタルも軽い。
-
-昨日の夕方から喉が痛くてまずい。龍角散のどすっきり飴、頼んだよ。
-
-冷蔵庫を漁ったらカルーアを見つけた。ちょうど牛乳もあったから飲んだ。最初のうちは美味しいけど、最後の濃い部分は消毒用アルコールの匂いでむんむんだった。まずい。久しぶりのお酒に頭が痛くなった感じがした。
-
-ここ数日、缶のコーン茶割りを探しているけれど、見つからない。ドンキかなぁ。格安の殿堂だと思ってた。正しくは驚安！しかも造語なんだ。間違えるとしても激安が相場。
-
-カクヤス（酒の発注先）のせいだ。</div>
-
-  </main>
-
-
-
-  <!-- =========================
-       下部ナビ用の余白
-  ========================== -->
-
-  <div class="bottom-space"></div>
-
-
-
-  <!-- =========================
-       きのう / あした
-  ========================== -->
-
-  <nav class="navigation">
-
-    <div class="navigation-inner">
-
-
-      <a
-        href="20261006.html"
-        class="nav-link"
-      >
-
-        <span class="arrow arrow-left"></span>
-
-        <span>きのう</span>
-
-      </a>
-
-
-      <a
-        href="20261008.html"
-        class="nav-link"
-      >
-
-        <span>あした</span>
-
-        <span class="arrow arrow-right"></span>
-
-      </a>
-
-
-    </div>
-
   </nav>
 
+  <main class="page">
+    <div class="date" id="date">読み込み中</div>
+    <article id="article">読み込み中</article>
+  </main>
 
+  <nav class="bottom-nav">
+    <div class="bottom-nav-inner">
 
-  <!-- =========================
-       メニュー
-  ========================== -->
+      <a class="nav-link" id="yesterday" href="#">
+        <span class="arrow arrow-left"></span>
+        <span>きのう</span>
+      </a>
 
-  <div
-    class="menu"
-    id="menu"
-  >
+      <a class="nav-link" id="tomorrow" href="#">
+        <span>あした</span>
+        <span class="arrow arrow-right"></span>
+      </a>
 
-    <ul class="menu-list">
-
-      <li>
-        <a href="index.html">
-          きょう
-        </a>
-      </li>
-
-      <li>
-        <a href="design.html">
-          デザイン
-        </a>
-      </li>
-
-      <li>
-        <a href="record.html">
-          記録
-        </a>
-      </li>
-
-      <li>
-        <a href="profile.html">
-          プロフィール
-        </a>
-      </li>
-
-    </ul>
-
-  </div>
-
-
-
-  <!-- =========================
-       メニュー開閉
-  ========================== -->
+    </div>
+  </nav>
 
   <script>
+    const menuButton = document.getElementById("menuButton");
+    const menu = document.getElementById("menu");
 
-    const menuButton =
-      document.getElementById("menuButton");
+    menuButton.addEventListener("click", () => {
+      const isOpen = menu.classList.toggle("open");
 
-    const menuIcon =
-      document.getElementById("menuIcon");
+      menuButton.textContent = isOpen ? "×" : "☰";
+      menuButton.setAttribute("aria-expanded", isOpen);
+      menuButton.setAttribute(
+        "aria-label",
+        isOpen ? "メニューを閉じる" : "メニューを開く"
+      );
+    });
 
-    const menu =
-      document.getElementById("menu");
+    async function loadLatestDiary() {
+      const apiUrl =
+        "https://api.github.com/repos/sakana-bozu/ohazabu-diary/contents/";
 
+      try {
+        const response = await fetch(apiUrl + "?t=" + Date.now());
 
-    menuButton.addEventListener(
-      "click",
-      function () {
-
-        const isOpen =
-          menu.classList.toggle("open");
-
-
-        if (isOpen) {
-
-          menuIcon.textContent = "×";
-
-          menuButton.setAttribute(
-            "aria-expanded",
-            "true"
-          );
-
-          menuButton.setAttribute(
-            "aria-label",
-            "メニューを閉じる"
-          );
-
-
-        } else {
-
-          menuIcon.textContent = "☰";
-
-          menuButton.setAttribute(
-            "aria-expanded",
-            "false"
-          );
-
-          menuButton.setAttribute(
-            "aria-label",
-            "メニューを開く"
-          );
-
+        if (!response.ok) {
+          throw new Error("GitHub API error");
         }
 
+        const files = await response.json();
+
+        const diaryFiles = files
+          .filter(file => /^\d{8}\.html$/.test(file.name))
+          .sort((a, b) => b.name.localeCompare(a.name));
+
+        if (diaryFiles.length === 0) {
+          throw new Error("日記ファイルがありません");
+        }
+
+        const latest = diaryFiles[0];
+        const latestDate = latest.name.replace(".html", "");
+
+        const rawUrl =
+          "https://raw.githubusercontent.com/sakana-bozu/ohazabu-diary/main/" +
+          latest.name;
+
+        const diaryResponse = await fetch(rawUrl + "?t=" + Date.now());
+
+        if (!diaryResponse.ok) {
+          throw new Error("日記ファイルを取得できません");
+        }
+
+        const html = await diaryResponse.text();
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, "text/html");
+
+        const date = doc.querySelector(".date");
+        const article = doc.querySelector("article");
+
+        if (!date || !article) {
+          throw new Error("日記の形式が正しくありません");
+        }
+
+        document.getElementById("date").textContent =
+          date.textContent;
+
+        document.getElementById("article").textContent =
+          article.textContent;
+
+        const year = Number(latestDate.slice(0, 4));
+        const month = Number(latestDate.slice(4, 6)) - 1;
+        const day = Number(latestDate.slice(6, 8));
+
+        const current = new Date(year, month, day);
+
+        const yesterday = new Date(current);
+        yesterday.setDate(current.getDate() - 1);
+
+        const tomorrow = new Date(current);
+        tomorrow.setDate(current.getDate() + 1);
+
+        function formatDate(date) {
+          const y = date.getFullYear();
+          const m = String(date.getMonth() + 1).padStart(2, "0");
+          const d = String(date.getDate()).padStart(2, "0");
+          return `${y}${m}${d}.html`;
+        }
+
+        document.getElementById("yesterday").href =
+          formatDate(yesterday);
+
+        document.getElementById("tomorrow").href =
+          formatDate(tomorrow);
+
+      } catch (error) {
+        console.error(error);
+
+        document.getElementById("date").textContent = "";
+        document.getElementById("article").textContent =
+          "日記を読み込めませんでした。";
       }
-    );
+    }
 
+    loadLatestDiary();
   </script>
-
 
 </body>
 </html>
