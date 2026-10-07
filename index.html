@@ -39,7 +39,7 @@
 
     /* =========================
        全体の横幅
-       ========================= */
+    ========================= */
 
     .page {
       width: min(900px, calc(100% - 48px));
@@ -68,6 +68,8 @@
         sans-serif;
 
       font-size: 28px;
+
+      /* 少し太め */
       font-weight: 600;
 
       line-height: 1.4;
@@ -110,10 +112,10 @@
         YuGothic,
         sans-serif;
 
-      /*
-        大きめだけど細い
-      */
+      /* 大きめ */
       font-size: 35px;
+
+      /* 細め */
       font-weight: 300;
 
       line-height: 1;
@@ -132,7 +134,6 @@
 
       font-size: 35px;
       font-weight: 300;
-
       line-height: 1;
 
       transform: translateY(-1px);
@@ -144,14 +145,11 @@
     ========================= */
 
     main {
-      /*
-        タイトルから日付まで
-      */
       padding-top: 78px;
 
       /*
         下部ナビゲーションと
-        本文が重ならないための余白
+        本文が重ならないようにする
       */
       padding-bottom: 150px;
     }
@@ -162,7 +160,7 @@
     ========================= */
 
     .date {
-      margin: 0;
+      margin: 0 0 42px 0;
 
       color: #000000;
 
@@ -184,12 +182,6 @@
     ========================= */
 
     .article {
-      /*
-        20261007と本文の間を
-        しっかり空ける
-      */
-      margin-top: 42px;
-
       color: #000000;
 
       font-family:
@@ -200,17 +192,17 @@
 
       font-size: 22px;
 
-      /*
-        本文は少し細め
-      */
+      /* 少し細め */
       font-weight: 350;
 
       /*
-        文章同士の行間は
-        前回より少し狭く
+        文章同士の行間
       */
       line-height: 1.45;
 
+      /*
+        改行をそのまま反映
+      */
       white-space: pre-wrap;
     }
 
@@ -239,8 +231,7 @@
       width: 100%;
 
       /*
-        本文や写真に
-        ナビが直接重ならないよう
+        本文や写真に被らないように
         白い背景を確保
       */
       padding: 20px 0 28px;
@@ -258,7 +249,17 @@
       align-items: center;
     }
 
-    .navigation a {
+
+    /* =========================
+       きのう / あした
+    ========================= */
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+
+      gap: 8px;
+
       color: #003B75;
 
       font-family:
@@ -267,14 +268,104 @@
         YuGothic,
         sans-serif;
 
+      /*
+        タイトルより小さい
+      */
       font-size: 18px;
-      font-weight: 400;
+
+      /*
+        タイトルと同じ太さ
+      */
+      font-weight: 600;
 
       text-decoration: none;
     }
 
-    .navigation a:hover {
+    .nav-link:hover {
       opacity: 0.55;
+    }
+
+
+    /* =========================
+       矢印
+    ========================= */
+
+    .arrow {
+      position: relative;
+
+      display: inline-block;
+
+      width: 22px;
+      height: 14px;
+
+      flex-shrink: 0;
+    }
+
+
+    /* 横線 */
+
+    .arrow::before {
+      content: "";
+
+      position: absolute;
+
+      top: 50%;
+      left: 0;
+
+      width: 20px;
+      height: 2px;
+
+      background: #003B75;
+
+      transform: translateY(-50%);
+    }
+
+
+    /* =========================
+       左矢印
+    ========================= */
+
+    .arrow-left::after {
+      content: "";
+
+      position: absolute;
+
+      left: 1px;
+      top: 50%;
+
+      width: 9px;
+      height: 9px;
+
+      border-left: 2px solid #003B75;
+      border-bottom: 2px solid #003B75;
+
+      transform:
+        translateY(-50%)
+        rotate(45deg);
+    }
+
+
+    /* =========================
+       右矢印
+    ========================= */
+
+    .arrow-right::after {
+      content: "";
+
+      position: absolute;
+
+      right: 1px;
+      top: 50%;
+
+      width: 9px;
+      height: 9px;
+
+      border-top: 2px solid #003B75;
+      border-right: 2px solid #003B75;
+
+      transform:
+        translateY(-50%)
+        rotate(45deg);
     }
 
 
@@ -302,9 +393,7 @@
     }
 
 
-    /* =========================
-       メニュー項目
-    ========================= */
+    /* メニュー項目 */
 
     .menu-list {
       display: flex;
@@ -329,7 +418,11 @@
         YuGothic,
         sans-serif;
 
+      /*
+        タイトルと同じくらい
+      */
       font-size: 28px;
+
       font-weight: 500;
 
       text-decoration: none;
@@ -346,14 +439,14 @@
 
     @media (max-width: 600px) {
 
-      /* 横幅 */
-
       .page {
         width: calc(100% - 40px);
       }
 
 
-      /* ヘッダー */
+      /* -------------------------
+         ヘッダー
+      ------------------------- */
 
       header {
         padding-top: 30px;
@@ -364,7 +457,9 @@
       }
 
 
-      /* メニューボタン */
+      /* -------------------------
+         メニューボタン
+      ------------------------- */
 
       .menu-button {
         top: 24px;
@@ -381,7 +476,9 @@
       }
 
 
-      /* 本文 */
+      /* -------------------------
+         本文
+      ------------------------- */
 
       main {
         padding-top: 60px;
@@ -392,6 +489,8 @@
       /* 日付 */
 
       .date {
+        margin-bottom: 34px;
+
         font-size: 20px;
         line-height: 1.35;
       }
@@ -400,22 +499,15 @@
       /* 本文 */
 
       .article {
-        /*
-          スマホでも日付と本文の間は
-          しっかり空ける
-        */
-        margin-top: 38px;
-
         font-size: 20px;
 
-        /*
-          本文同士は詰め気味
-        */
         line-height: 1.45;
       }
 
 
-      /* 下部ナビ */
+      /* -------------------------
+         下部ナビ
+      ------------------------- */
 
       .navigation {
         padding: 17px 0 23px;
@@ -425,12 +517,46 @@
         width: calc(100% - 40px);
       }
 
-      .navigation a {
+      .nav-link {
         font-size: 16px;
+        font-weight: 600;
+
+        gap: 7px;
       }
 
 
-      /* メニュー */
+      /* スマホの矢印 */
+
+      .arrow {
+        width: 19px;
+        height: 13px;
+      }
+
+      .arrow::before {
+        width: 17px;
+        height: 2px;
+      }
+
+      .arrow-left::after {
+        width: 8px;
+        height: 8px;
+
+        border-left-width: 2px;
+        border-bottom-width: 2px;
+      }
+
+      .arrow-right::after {
+        width: 8px;
+        height: 8px;
+
+        border-top-width: 2px;
+        border-right-width: 2px;
+      }
+
+
+      /* -------------------------
+         メニュー
+      ------------------------- */
 
       .menu-list {
         gap: 22px;
@@ -443,7 +569,6 @@
     }
 
   </style>
-
 </head>
 
 
@@ -487,7 +612,6 @@
 
   <main class="page">
 
-
     <!-- 日付 -->
 
     <div class="date">
@@ -503,13 +627,12 @@
 
 写真を入れる場合も、この本文の中に追加できます。</div>
 
-
   </main>
 
 
 
   <!-- =========================
-       下部ナビゲーション用の余白
+       下部ナビゲーション分の余白
   ========================== -->
 
   <div class="bottom-space"></div>
@@ -524,13 +647,38 @@
 
     <div class="navigation-inner">
 
-      <a href="20261006.html">
-        ←きのう
+
+      <!-- きのう -->
+
+      <a
+        href="20261006.html"
+        class="nav-link"
+      >
+
+        <span class="arrow arrow-left"></span>
+
+        <span>
+          きのう
+        </span>
+
       </a>
 
-      <a href="20261008.html">
-        あした→
+
+      <!-- あした -->
+
+      <a
+        href="20261008.html"
+        class="nav-link"
+      >
+
+        <span>
+          あした
+        </span>
+
+        <span class="arrow arrow-right"></span>
+
       </a>
+
 
     </div>
 
@@ -549,11 +697,13 @@
 
     <ul class="menu-list">
 
+
       <li>
         <a href="index.html">
           きょう
         </a>
       </li>
+
 
       <li>
         <a href="design.html">
@@ -561,17 +711,20 @@
         </a>
       </li>
 
+
       <li>
         <a href="record.html">
           記録
         </a>
       </li>
 
+
       <li>
         <a href="profile.html">
           プロフィール
         </a>
       </li>
+
 
     </ul>
 
@@ -605,7 +758,10 @@
 
         if (isOpen) {
 
-          /* メニューを開く */
+          /*
+            メニューを開いたとき
+            ☰ → ×
+          */
 
           menuIcon.textContent = "×";
 
@@ -622,7 +778,10 @@
 
         } else {
 
-          /* メニューを閉じる */
+          /*
+            メニューを閉じたとき
+            × → ☰
+          */
 
           menuIcon.textContent = "☰";
 
