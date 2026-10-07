@@ -1,1 +1,660 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>20261007 | オハザブ日記</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+
+      background: #ffffff;
+      color: #000000;
+
+      font-family:
+        "Yu Gothic",
+        "游ゴシック",
+        YuGothic,
+        sans-serif;
+
+      font-weight: 400;
+    }
+
+
+    /* 全体 */
+
+    .page {
+      width: min(900px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+
+    /* ヘッダー */
+
+    header {
+      position: relative;
+      padding-top: 42px;
+    }
+
+    .site-title {
+      margin: 0;
+
+      color: #003B75;
+
+      font-family:
+        "Yu Gothic",
+        "游ゴシック",
+        YuGothic,
+        sans-serif;
+
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+
+    /* メニューボタン */
+
+    .menu-button {
+      position: fixed;
+
+      top: 36px;
+      right: max(22px, calc((100vw - 900px) / 2));
+
+      z-index: 1001;
+
+      width: 42px;
+      height: 42px;
+
+      padding: 0;
+      margin: 0;
+
+      border: none;
+      outline: none;
+
+      background: transparent;
+      color: #003B75;
+
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-family:
+        "Yu Gothic",
+        "游ゴシック",
+        YuGothic,
+        sans-serif;
+
+      font-size: 35px;
+      font-weight: 300;
+      line-height: 1;
+
+      appearance: none;
+    }
+
+    .menu-button span {
+      display: block;
+
+      font-family:
+        "Yu Gothic",
+        "游ゴシック",
+        YuGothic,
+        sans-serif;
+
+      font-size: 35px;
+      font-weight: 300;
+      line-height: 1;
+
+      transform: translateY(-1px);
+    }
+
+
+    /* 本文 */
+
+    main {
+      padding-top: 78px;
+      padding-bottom: 150px;
+    }
+
+
+    /* 日付 */
+
+    .date {
+      margin: 0 0 42px 0;
+
+      color: #000000;
+
+      font-family:
+        "Yu Mincho",
+        "游明朝",
+        YuMincho,
+        serif;
+
+      font-size: 22px;
+      font-weight: 400;
+
+      line-height: 1.4;
+    }
+
+
+    /* 日記 */
+
+    .article {
+      color: #000000;
+
+      font-family:
+        "Yu Gothic",
+        "游ゴシック",
+        YuGothic,
+        sans-serif;
+
+      font-size: 22px;
+      font-weight: 350;
+
+      line-height: 1.45;
+
+      white-space: pre-wrap;
+    }
+
+
+    /* 下部ナビ用の余白 */
+
+    .bottom-space {
+      height: 90px;
+    }
+
+
+    /* 下部ナビ */
+
+    .navigation {
+      position: fixed;
+
+      left: 0;
+      bottom: 0;
+
+      z-index: 900;
+
+      width: 100%;
+
+      padding: 20px 0 28px;
+
+      background: #ffffff;
+    }
+
+    .navigation-inner {
+      width: min(900px, calc(100% - 48px));
+
+      margin: 0 auto;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+
+    /* きのう・あした */
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+
+      gap: 8px;
+
+      color: #003B75;
+
+      font-family:
+        "Yu Gothic",
+        "游ゴシック",
+        YuGothic,
+        sans-serif;
+
+      font-size: 18px;
+      font-weight: 600;
+
+      text-decoration: none;
+    }
+
+    .nav-link:hover {
+      opacity: 0.55;
+    }
+
+
+    /* 矢印 */
+
+    .arrow {
+      position: relative;
+
+      display: inline-block;
+
+      width: 22px;
+      height: 14px;
+
+      flex-shrink: 0;
+    }
+
+    .arrow::before {
+      content: "";
+
+      position: absolute;
+
+      top: 50%;
+      left: 0;
+
+      width: 20px;
+      height: 2px;
+
+      background: #003B75;
+
+      transform: translateY(-50%);
+    }
+
+
+    /* 左矢印 */
+
+    .arrow-left::after {
+      content: "";
+
+      position: absolute;
+
+      left: 1px;
+      top: 50%;
+
+      width: 9px;
+      height: 9px;
+
+      border-left: 2px solid #003B75;
+      border-bottom: 2px solid #003B75;
+
+      transform:
+        translateY(-50%)
+        rotate(45deg);
+    }
+
+
+    /* 右矢印 */
+
+    .arrow-right::after {
+      content: "";
+
+      position: absolute;
+
+      right: 1px;
+      top: 50%;
+
+      width: 9px;
+      height: 9px;
+
+      border-top: 2px solid #003B75;
+      border-right: 2px solid #003B75;
+
+      transform:
+        translateY(-50%)
+        rotate(45deg);
+    }
+
+
+    /* メニュー */
+
+    .menu {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 1000;
+
+      display: none;
+
+      align-items: center;
+      justify-content: center;
+
+      background: #ffffff;
+    }
+
+    .menu.open {
+      display: flex;
+    }
+
+    .menu-list {
+      display: flex;
+
+      flex-direction: column;
+      align-items: center;
+
+      gap: 25px;
+
+      margin: 0;
+      padding: 0;
+
+      list-style: none;
+    }
+
+    .menu-list a {
+      color: #003B75;
+
+      font-family:
+        "Yu Gothic",
+        "游ゴシック",
+        YuGothic,
+        sans-serif;
+
+      font-size: 28px;
+      font-weight: 500;
+
+      text-decoration: none;
+    }
+
+    .menu-list a:hover {
+      opacity: 0.55;
+    }
+
+
+    /* スマートフォン */
+
+    @media (max-width: 600px) {
+
+      .page {
+        width: calc(100% - 40px);
+      }
+
+      header {
+        padding-top: 30px;
+      }
+
+      .site-title {
+        font-size: 24px;
+      }
+
+      .menu-button {
+        top: 24px;
+        right: 16px;
+
+        width: 44px;
+        height: 44px;
+
+        font-size: 34px;
+      }
+
+      .menu-button span {
+        font-size: 34px;
+      }
+
+      main {
+        padding-top: 60px;
+        padding-bottom: 125px;
+      }
+
+      .date {
+        margin-bottom: 34px;
+
+        font-size: 20px;
+        line-height: 1.35;
+      }
+
+      .article {
+        font-size: 20px;
+        line-height: 1.45;
+      }
+
+      .navigation {
+        padding: 17px 0 23px;
+      }
+
+      .navigation-inner {
+        width: calc(100% - 40px);
+      }
+
+      .nav-link {
+        font-size: 16px;
+        font-weight: 600;
+        gap: 7px;
+      }
+
+      .arrow {
+        width: 19px;
+        height: 13px;
+      }
+
+      .arrow::before {
+        width: 17px;
+        height: 2px;
+      }
+
+      .arrow-left::after {
+        width: 8px;
+        height: 8px;
+
+        border-left-width: 2px;
+        border-bottom-width: 2px;
+      }
+
+      .arrow-right::after {
+        width: 8px;
+        height: 8px;
+
+        border-top-width: 2px;
+        border-right-width: 2px;
+      }
+
+      .menu-list {
+        gap: 22px;
+      }
+
+      .menu-list a {
+        font-size: 24px;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- ヘッダー -->
+
+  <header class="page">
+
+    <h1 class="site-title">
+      オハザブ日記
+    </h1>
+
+  </header>
+
+
+
+  <!-- メニューボタン -->
+
+  <button
+    class="menu-button"
+    id="menuButton"
+    aria-label="メニューを開く"
+    aria-expanded="false"
+  >
+
+    <span id="menuIcon">☰</span>
+
+  </button>
+
+
+
+  <!-- 日記本文 -->
+
+  <main class="page">
+
+    <div class="date">
+      20261007
+    </div>
+
+
+    <div class="article">11時半くらいに起きて、カフェオレを飲みながらメールを返すなど仕事をして、16時ごろに担々麺風？春雨を食べた。最近ハマってるというか、春雨を買っちゃったし金欠だし。金欠だと強制的にダイエットができていい。体が軽い方がメンタルも軽い。
+
+昨日の夕方から喉が痛くてまずい。頼んだ、龍角散のどすっきり飴！
+
+冷蔵庫を漁ったらカルーアを見つけた。ちょうど牛乳もあったから飲んだ。最初のうちは美味しいけど、最後の濃い部分は消毒用アルコールの匂いでむんむんだった。まずい。久しぶりのお酒に頭が痛くなった感じがした。
+
+ここ数日、缶のコーン茶割りを探しているけれど、見つからない。ドンキかなぁ。格安の殿堂だと思ってた。正しくは驚安！しかも造語なんだ。間違えるとしても激安が相場。
+
+カクヤス（酒の発注先）のことばかり考えている。</div>
+
+  </main>
+
+
+
+  <!-- 下部ナビ用の余白 -->
+
+  <div class="bottom-space"></div>
+
+
+
+  <!-- きのう・あした -->
+
+  <nav class="navigation">
+
+    <div class="navigation-inner">
+
+
+      <a
+        href="20261006.html"
+        class="nav-link"
+      >
+
+        <span class="arrow arrow-left"></span>
+
+        <span>きのう</span>
+
+      </a>
+
+
+      <a
+        href="20261008.html"
+        class="nav-link"
+      >
+
+        <span>あした</span>
+
+        <span class="arrow arrow-right"></span>
+
+      </a>
+
+
+    </div>
+
+  </nav>
+
+
+
+  <!-- メニュー -->
+
+  <div
+    class="menu"
+    id="menu"
+  >
+
+    <ul class="menu-list">
+
+      <li>
+        <a href="index.html">
+          きょう
+        </a>
+      </li>
+
+      <li>
+        <a href="design.html">
+          デザイン
+        </a>
+      </li>
+
+      <li>
+        <a href="record.html">
+          記録
+        </a>
+      </li>
+
+      <li>
+        <a href="profile.html">
+          プロフィール
+        </a>
+      </li>
+
+    </ul>
+
+  </div>
+
+
+
+  <!-- メニュー開閉 -->
+
+  <script>
+
+    const menuButton =
+      document.getElementById("menuButton");
+
+    const menuIcon =
+      document.getElementById("menuIcon");
+
+    const menu =
+      document.getElementById("menu");
+
+
+    menuButton.addEventListener(
+      "click",
+      function () {
+
+        const isOpen =
+          menu.classList.toggle("open");
+
+
+        if (isOpen) {
+
+          menuIcon.textContent = "×";
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            "true"
+          );
+
+          menuButton.setAttribute(
+            "aria-label",
+            "メニューを閉じる"
+          );
+
+
+        } else {
+
+          menuIcon.textContent = "☰";
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          menuButton.setAttribute(
+            "aria-label",
+            "メニューを開く"
+          );
+
+        }
+
+      }
+    );
+
+  </script>
+
+
+</body>
+</html>
