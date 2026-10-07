@@ -11,33 +11,31 @@
       box-sizing: border-box;
     }
 
-    html,
+    html {
+      min-height: 100%;
+      background: #ffffff;
+    }
+
     body {
       margin: 0;
-      padding: 0;
+      min-height: 100vh;
       background: #ffffff;
       color: #000000;
-    }
-
-    body {
       font-family: "Yu Gothic", "游ゴシック", YuGothic, sans-serif;
-      font-weight: 500;
+      font-weight: 400;
     }
 
-    /* 全体の横幅 */
+    /* 全ページ共通の横幅 */
     .page {
-      width: calc(100% - 40px);
-      max-width: 900px;
+      width: min(900px, calc(100% - 48px));
       margin: 0 auto;
-      min-height: 100vh;
       position: relative;
     }
 
-    /* 上部 */
+    /* ヘッダー */
     header {
       position: relative;
-      padding-top: 28px;
-      padding-bottom: 70px;
+      padding-top: 42px;
     }
 
     .site-title {
@@ -49,219 +47,189 @@
       line-height: 1.4;
     }
 
-    /* 三本線 */
+    /* メニューボタン */
     .menu-button {
-      position: absolute;
-      top: 25px;
-      right: 0;
-      width: 34px;
-      height: 34px;
-      padding: 5px 0;
+      position: fixed;
+      top: 40px;
+      right: max(24px, calc((100vw - 900px) / 2));
+      z-index: 1001;
+
+      width: 36px;
+      height: 36px;
+      padding: 0;
+
       border: none;
       background: transparent;
       color: #003B75;
+
+      font-family: "Yu Gothic", "游ゴシック", YuGothic, sans-serif;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 36px;
+
       cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
     }
 
     .menu-button span {
       display: block;
-      width: 28px;
-      height: 2px;
-      background: #003B75;
+      line-height: 32px;
     }
 
     /* 日記 */
     main {
-      padding-bottom: 130px;
+      padding-top: 85px;
+      padding-bottom: 150px;
     }
 
     .date {
-      margin: 0 0 18px 0;
+      margin: 0 0 26px 0;
+
+      color: #000000;
       font-family: "Yu Mincho", "游明朝", YuMincho, serif;
-      font-size: 21px;
+      font-size: 23px;
       font-weight: 400;
       line-height: 1.5;
-      color: #000000;
     }
 
-    .diary {
+    .article {
+      color: #000000;
       font-family: "Yu Gothic", "游ゴシック", YuGothic, sans-serif;
-      font-size: 21px;
-      font-weight: 500;
-      line-height: 1.9;
-      color: #000000;
+      font-size: 23px;
+      font-weight: 350;
+      line-height: 2;
+
+      white-space: pre-wrap;
     }
 
-    .diary p {
-      margin: 0 0 1.5em 0;
+    /* 下部ナビゲーション */
+    .bottom-space {
+      height: 90px;
     }
 
-    .diary img {
-      display: block;
-      width: 100%;
-      height: auto;
-      margin: 30px 0;
-    }
-
-    /* 下部ナビ */
-    .bottom-area {
+    .navigation {
       position: fixed;
-      z-index: 20;
       left: 0;
-      right: 0;
       bottom: 0;
+      z-index: 900;
+
+      width: 100%;
+      padding: 22px 0 28px;
 
       background: #ffffff;
-      padding: 20px 0 25px;
     }
 
-    .bottom-nav {
-      width: calc(100% - 40px);
-      max-width: 900px;
+    .navigation-inner {
+      width: min(900px, calc(100% - 48px));
       margin: 0 auto;
 
       display: flex;
       justify-content: space-between;
       align-items: center;
-
-      font-family: "Yu Gothic", "游ゴシック", YuGothic, sans-serif;
-      font-size: 18px;
-      font-weight: 500;
     }
 
-    .bottom-nav a {
+    .navigation a {
       color: #003B75;
+      font-family: "Yu Gothic", "游ゴシック", YuGothic, sans-serif;
+      font-size: 18px;
+      font-weight: 400;
       text-decoration: none;
     }
 
-    /* メニュー画面 */
-    .menu-screen {
-      position: fixed;
-      z-index: 100;
-      inset: 0;
+    .navigation a:hover {
+      opacity: 0.6;
+    }
 
-      background: #ffffff;
+    /* メニュー */
+    .menu {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
 
       display: none;
-    }
-
-    .menu-screen.open {
-      display: block;
-    }
-
-    .menu-inner {
-      width: calc(100% - 40px);
-      max-width: 900px;
-      min-height: 100vh;
-      margin: 0 auto;
-
-      position: relative;
-
-      display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+
+      background: #ffffff;
+    }
+
+    .menu.open {
+      display: flex;
     }
 
     .menu-list {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 28px;
+      gap: 34px;
 
-      font-family: "Yu Gothic", "游ゴシック", YuGothic, sans-serif;
-      font-size: 28px;
-      font-weight: 500;
+      margin: 0;
+      padding: 0;
+
+      list-style: none;
     }
 
     .menu-list a {
       color: #003B75;
+      font-family: "Yu Gothic", "游ゴシック", YuGothic, sans-serif;
+      font-size: 28px;
+      font-weight: 500;
       text-decoration: none;
     }
 
-    /* メニューを開いているときの× */
-    .close-button {
-      position: absolute;
-      top: 25px;
-      right: 0;
-
-      width: 34px;
-      height: 34px;
-
-      padding: 0;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-    }
-
-    .close-button::before,
-    .close-button::after {
-      content: "";
-      position: absolute;
-      top: 16px;
-      left: 3px;
-
-      width: 28px;
-      height: 2px;
-      background: #003B75;
-    }
-
-    .close-button::before {
-      transform: rotate(45deg);
-    }
-
-    .close-button::after {
-      transform: rotate(-45deg);
+    .menu-list a:hover {
+      opacity: 0.6;
     }
 
     /* スマホ */
     @media (max-width: 600px) {
 
       .page {
-        width: calc(100% - 32px);
+        width: calc(100% - 40px);
       }
 
       header {
-        padding-top: 22px;
-        padding-bottom: 55px;
+        padding-top: 30px;
       }
 
       .site-title {
-        font-size: 25px;
+        font-size: 24px;
       }
 
       .menu-button {
-        top: 20px;
+        top: 28px;
+        right: 20px;
+        font-size: 26px;
+      }
+
+      main {
+        padding-top: 65px;
+        padding-bottom: 130px;
       }
 
       .date {
-        font-size: 19px;
+        font-size: 20px;
+        margin-bottom: 22px;
       }
 
-      .diary {
-        font-size: 19px;
+      .article {
+        font-size: 20px;
         line-height: 1.9;
       }
 
-      .bottom-area {
-        padding: 17px 0 20px;
+      .navigation {
+        padding: 18px 0 24px;
       }
 
-      .bottom-nav {
-        width: calc(100% - 32px);
-        font-size: 17px;
+      .navigation-inner {
+        width: calc(100% - 40px);
       }
 
-      .menu-inner {
-        width: calc(100% - 32px);
+      .navigation a {
+        font-size: 16px;
       }
 
-      .menu-list {
-        font-size: 25px;
-        gap: 25px;
+      .menu-list a {
+        font-size: 24px;
       }
     }
   </style>
@@ -269,110 +237,88 @@
 
 <body>
 
-  <!-- 通常ページ -->
-  <div class="page">
+  <!-- ヘッダー -->
+  <header class="page">
+    <h1 class="site-title">オハザブ日記</h1>
+  </header>
 
-    <header>
-      <h1 class="site-title">オハザブ日記</h1>
+  <!-- メニューボタン -->
+  <button
+    class="menu-button"
+    id="menuButton"
+    aria-label="メニューを開く"
+    aria-expanded="false"
+  >
+    <span id="menuIcon">☰</span>
+  </button>
 
-      <button class="menu-button" onclick="openMenu()" aria-label="メニュー">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </header>
+  <!-- 日記本文 -->
+  <main class="page">
 
-    <main>
+    <div class="date">20261007</div>
 
-      <div class="date">
-        20261007
-      </div>
+    <div class="article">ここに今日の日記を書きます。
 
-      <article class="diary">
+文章をここに追加していってください。
 
-        <p>
-          ここに今日の日記を書く。
-        </p>
+写真を入れる場合も、この本文の中に追加できます。</div>
 
-        <p>
-          文章を書いたり、写真を入れたりできます。
-        </p>
+  </main>
 
-        <!--
-        写真を入れる場合：
+  <!-- 下部ナビが本文に被らないための余白 -->
+  <div class="bottom-space"></div>
 
-        <img src="画像ファイル名.jpg" alt="">
-        -->
-
-      </article>
-
-    </main>
-
-  </div>
-
-
-  <!-- 下部ナビ -->
-  <div class="bottom-area">
-
-    <nav class="bottom-nav">
-
-      <a href="20261006.html">
-        ←きのう
-      </a>
-
-      <a href="20261008.html">
-        あした→
-      </a>
-
-    </nav>
-
-  </div>
-
+  <!-- 前後の日記 -->
+  <nav class="navigation">
+    <div class="navigation-inner">
+      <a href="20261006.html">←きのう</a>
+      <a href="20261008.html">あした→</a>
+    </div>
+  </nav>
 
   <!-- メニュー -->
-  <div class="menu-screen" id="menuScreen">
+  <div class="menu" id="menu">
 
-    <div class="menu-inner">
+    <ul class="menu-list">
+      <li>
+        <a href="index.html">きょう</a>
+      </li>
 
-      <button
-        class="close-button"
-        onclick="closeMenu()"
-        aria-label="メニューを閉じる">
-      </button>
+      <li>
+        <a href="design.html">デザイン</a>
+      </li>
 
-      <nav class="menu-list">
+      <li>
+        <a href="record.html">記録</a>
+      </li>
 
-        <a href="index.html">
-          きょう
-        </a>
-
-        <a href="design.html">
-          デザイン
-        </a>
-
-        <a href="record.html">
-          記録
-        </a>
-
-        <a href="profile.html">
-          プロフィール
-        </a>
-
-      </nav>
-
-    </div>
+      <li>
+        <a href="profile.html">プロフィール</a>
+      </li>
+    </ul>
 
   </div>
 
-
   <script>
-    function openMenu() {
-      document.getElementById("menuScreen").classList.add("open");
-    }
+    const menuButton = document.getElementById("menuButton");
+    const menuIcon = document.getElementById("menuIcon");
+    const menu = document.getElementById("menu");
 
-    function closeMenu() {
-      document.getElementById("menuScreen").classList.remove("open");
-    }
+    menuButton.addEventListener("click", function () {
+
+      const isOpen = menu.classList.toggle("open");
+
+      if (isOpen) {
+        menuIcon.textContent = "×";
+        menuButton.setAttribute("aria-expanded", "true");
+        menuButton.setAttribute("aria-label", "メニューを閉じる");
+      } else {
+        menuIcon.textContent = "☰";
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "メニューを開く");
+      }
+
+    });
   </script>
 
 </body>
